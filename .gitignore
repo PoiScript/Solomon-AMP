@@ -93,8 +93,19 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
 # Complied files
 output
 
 # Pid files
 *.pid
+
+# Markdown files
+content
