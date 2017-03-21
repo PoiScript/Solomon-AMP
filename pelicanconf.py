@@ -8,7 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Beijing'
+TIMEZONE = 'Asia/Shanghai'
 
 DEFAULT_LANG = 'zh'
 
