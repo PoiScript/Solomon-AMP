@@ -2,23 +2,57 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'PoiScript'
+# Basic settings
 SITENAME = 'Solomon'
-SITEURL = ''
-
+SITEURL = 'https://amp.poi.works'
 PATH = 'content'
-
-TIMEZONE = 'Asia/Shanghai'
-
-DEFAULT_LANG = 'zh'
-
-THEME = 'theme'
-
-STATIC_PATHS = ['extra/favicon.ico', 'extra/icon.png']
-
-DEFAULT_PAGINATION = False
-
 PLUGIN_PATHS = ["plugins"]
+STATIC_PATHS = ['extra/favicon.ico', 'extra/icon.png']
 PLUGINS = [
     "amp_markdown_reader"
 ]
+
+# URL settings
+TAG_URL = 'tag/{slug}.html'
+TAG_URL_SAVE_AS = 'tag/{slug}.html'
+TAGS_SAVE_AS = ''
+ARTICLE_URL = 'post/{slug}.html'
+ARTICLE_URL_SAVE_AS = 'post/{slug}.html'
+ARCHIVES_SAVE_AS = 'archive.html'
+AUTHOR_URL = ''
+AUTHOR_SAVE_AS = ''
+CATEGORY_SAVE_AS = ''
+CATEGORIES_SAVE_AS = ''
+
+# Time and Data
+TIMEZONE = 'Asia/Shanghai'
+
+# Template pages
+DIRECT_TEMPLATES = ['index', 'tags', 'archives']
+
+# Metadata
+AUTHOR = 'PoiScript'
+
+# Feed Settings
+FEED_DOMAIN = None
+FEED_RSS = None
+FEED_ATOM = None
+FEED_ALL_RSS = None
+FEED_ALL_ATOM = None
+AUTHOR_FEED_RSS = None
+AUTHOR_FEED_ATOM = None
+TAG_FEED_RSS = None
+TAG_FEED_ATOM = None
+CATEGORY_FEED_RSS = None
+CATEGORY_FEED_ATOM = None
+TRANSLATION_FEED_RSS = None
+TRANSLATION_FEED_ATOM = None
+
+# Pagination
+DEFAULT_PAGINATION = False
+
+# Translations
+DEFAULT_LANG = 'zh'
+
+# Themes
+THEME = 'theme'
