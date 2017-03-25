@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block component %}
-<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+<script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 {% endblock %}
 
@@ -36,6 +36,7 @@
         "width": 857
       }
 }
+
 
 
 </script>
@@ -513,6 +514,7 @@
 
 {% block content %}
 <section class="container">
+    <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
     <h1 class="primary-header">{{ article.title }}</h1>
     <div class="markdown-body">{{ article.content }}</div>
 </section>

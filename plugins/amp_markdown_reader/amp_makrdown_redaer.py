@@ -1,4 +1,8 @@
 import mistune
+import json
+import requests
+from PIL import Image
+from io import BytesIO
 from pelican import signals
 from pelican.readers import BaseReader
 from pelican.utils import pelican_open
@@ -8,12 +12,32 @@ class AMPRenderer(mistune.Renderer):
     def image(self, src, title, text):
         src = mistune.escape_link(src)
         text = mistune.escape(text, quote=True)
+        width, height = 0, 0
+        # width, height = get_image_size(src)
         if title:
             title = mistune.escape(title, quote=True)
-            html = '<amp-img src="%s" alt="%s" title="%s" height="400" width="800" layout="responsive"'\
-                   % (src, text, title)
+            html = '''
+                <amp-img on="tap:lightbox1"
+                    role="button"
+                    tabindex="0"
+                    src="%s"
+                    alt="%s"
+                    title="%s"
+                    layout="responsive"
+                    width="%s"
+                    height="%s"
+            ''' % (src, text, title, width, height)
         else:
-            html = '<amp-img src="%s" alt="%s" height="400" width="800" layout="responsive"' % (src, text)
+            html = '''
+                <amp-img on="tap:lightbox1"
+                    role="button"
+                    tabindex="0"
+                    src="%s"
+                    alt="%s"
+                    layout="responsive"
+                    width="%s"
+                    height="%s"
+            ''' % (src, text, width, height)
         return '%s></amp-img>' % html
 
 
@@ -29,18 +53,19 @@ class AMPMarkdownReader(BaseReader):
         with pelican_open(source_path) as fp:
             text = list(fp.splitlines())
 
+        meta = json.loads('\n'.join(text[text.index('```json') + 1:text.index('```')]))
         metadata = {}
-        for i, line in enumerate(text):
-            kv = line.split(':', 1)
-            if len(kv) == 2:
-                name, value = kv[0].lower(), kv[1].strip()
-                metadata[name] = self.process_metadata(name, value)
-            else:
-                content = "\n".join(text[i:])
-                break
-
-        content = markdown(content)
+        for k in meta:
+            name, value = k, meta[k]
+            metadata[name] = self.process_metadata(name, value)
+        content = markdown('\n'.join(text[text.index('```') + 1:]))
         return content, metadata
+
+
+def get_image_size(url):
+    data = requests.get(url).content
+    im = Image.open(BytesIO(data))
+    return im.size
 
 
 def add_reader(readers):

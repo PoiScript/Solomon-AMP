@@ -6,8 +6,8 @@ from __future__ import unicode_literals
 SITENAME = 'Solomon'
 SITEURL = 'https://amp.poi.works'
 PATH = 'content'
+IGNORE_FILES = ['about.md', 'link.md']
 PLUGIN_PATHS = ["plugins"]
-STATIC_PATHS = ['extra/favicon.ico', 'extra/icon.png']
 PLUGINS = [
     "amp_markdown_reader"
 ]
