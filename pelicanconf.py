@@ -8,16 +8,14 @@ SITEURL = 'https://amp.poi.works'
 PATH = 'content'
 IGNORE_FILES = ['about.md', 'link.md']
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = [
-    "amp_markdown_reader"
-]
+PLUGINS = ["amp_markdown_reader"]
 
 # URL settings
 TAG_URL = 'tag/{slug}.html'
 TAG_URL_SAVE_AS = 'tag/{slug}.html'
 TAGS_SAVE_AS = ''
 ARTICLE_URL = 'post/{slug}.html'
-ARTICLE_URL_SAVE_AS = 'post/{slug}.html'
+ARTICLE_SAVE_AS = 'post/{slug}.html'
 ARCHIVES_SAVE_AS = 'archive.html'
 AUTHOR_URL = ''
 AUTHOR_SAVE_AS = ''
@@ -55,4 +53,5 @@ DEFAULT_PAGINATION = False
 DEFAULT_LANG = 'zh'
 
 # Themes
-THEME = 'theme'
+THEME = 'theme/solomon_amp'
+THEME_STATIC_DIR = ''

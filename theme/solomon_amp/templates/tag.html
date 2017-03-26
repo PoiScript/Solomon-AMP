@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Tag: {{ tag }} - {{ SITENAME }}{% endblock title %}
+
+{% block custom_style %}
+<style amp-custom>
+    a {
+        color: rgba(0, 0, 0, .6);
+        text-decoration: none;
+    }
+
+    .post-link {
+        font-weight: 400;
+        font-size: 1.5em;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="primary-header">Tag: {{ tag }}</h1>
+{% for article in articles %}
+<a class="post-link" href="/{{ article.url }}">{{ article.title }}</a>
+<p>{{ article.date|strftime('%Y-%m-%d') }}
+    {% for tag in article.tags %}
+    <a href="/{{ tag.url }}">{{ tag }}</a>
+    {% endfor %}
+</p>
+{% endfor %}
+{% endblock %}

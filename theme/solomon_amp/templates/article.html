@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}{{ article.title}} - {{ SITENAME }}{% endblock title %}
+
 {% block component %}
 <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
@@ -43,21 +45,7 @@
 {% endblock %}
 
 {% block custom_style %}
-<style>
-    .primary-header {
-        color: rgba(0, 0, 0, .6);
-        font-size: 30px;
-        font-weight: 300;
-        margin: 0;
-        padding: 50px 0;
-    }
-
-    .container {
-        max-width: 960px;
-        margin: auto;
-        padding: 16px;
-    }
-
+<style amp-custom>
     .markdown-body {
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
@@ -513,9 +501,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="container">
-    <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
-    <h1 class="primary-header">{{ article.title }}</h1>
-    <div class="markdown-body">{{ article.content }}</div>
-</section>
+<amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+<h1 class="primary-header">{{ article.title }}</h1>
+<div class="markdown-body">{{ article.content }}</div>
 {% endblock %}
