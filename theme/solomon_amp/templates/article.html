@@ -2,6 +2,8 @@
 
 {% block title %}{{ article.title}} - {{ SITENAME }}{% endblock title %}
 
+{% block canonical %}<link rel="canonical" href="{{ NON_AMP_SITEURL }}/{{ article.url }}" />{% endblock %}
+
 {% block component %}
 <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
@@ -10,42 +12,75 @@
 {% block metadata %}
 <script type="application/ld+json">
 {
-      "@context": "http://schema.org",
-      "@type": "NewsArticle",
-      "mainEntityOfPage": "<%host%>/samples_templates/news_article/",
-      "headline": "Lorem Ipsum",
-      "datePublished": "2016-04-21T11:55:02Z",
-      "dateModified": "2016-04-21T11:55:02Z",
-      "description": "A sample news article build with AMP.",
-      "author": {
-        "@type": "Person",
-        "name": "Sebastian Benz"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Google",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "http://cdn.ampproject.org/logo.jpg",
-          "width": 600,
-          "height": 60
-        }
-      },
-      "image": {
-        "@type": "ImageObject",
-        "url": "<%host%>/img/landscape_lake_1280x857.jpg",
-        "height": 1280,
-        "width": 857
-      }
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ NON_AMP_SITEURL }}/{{ article.url }}"
+  },
+  "headline": "{{ article.title }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ article.image }}",
+    "height": 640,
+    "width": 960
+  },
+  "datePublished": "{{ article.date }}",
+  "dateModified": "{{ article.date }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ AUTHOR }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ SITENAME }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ SITEURL }}/amp-logo.png",
+      "width": 600,
+      "height": 60
+    }
+  },
+  "description": "An article from Solomon."
 }
-
-
-
 </script>
 {% endblock %}
 
 {% block custom_style %}
 <style amp-custom>
+    .container {
+        color: rgba(0, 0, 0, .6);
+        max-width: 960px;
+        margin: auto;
+        padding: 16px;
+    }
+
+    .container > div {
+        padding: 20px 0 0 0;
+    }
+
+    .primary-header {
+        font-size: 30px;
+        font-weight: 300;
+        margin: 0;
+        padding: 50px 0;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: .7em .8em;
+        text-decoration: none;
+        word-wrap: normal;
+        cursor: pointer;
+        background-color: #fff;
+        color: #673ab7;
+        border: 1px solid #673ab7;
+    }
+
+    .comment-btn {
+        padding: 50px 0;
+    }
+
     .markdown-body {
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
@@ -504,4 +539,7 @@
 <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
 <h1 class="primary-header">{{ article.title }}</h1>
 <div class="markdown-body">{{ article.content }}</div>
+<p align="center" class="comment-btn">
+    <a class="btn" href="{{ GITHUB_ISSUE_URL }}/{{ article.issue_number }}">VIEW COMMENT ON GITHUB</a>
+</p>
 {% endblock %}

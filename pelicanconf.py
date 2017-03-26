@@ -55,3 +55,7 @@ DEFAULT_LANG = 'zh'
 # Themes
 THEME = 'theme/solomon_amp'
 THEME_STATIC_DIR = ''
+
+# Extra
+NON_AMP_SITEURL = 'https://poi.works/#'
+GITHUB_ISSUE_URL = 'https://github.com/PoiScript/Solomon-Post/issues'
