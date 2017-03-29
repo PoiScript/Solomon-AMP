@@ -12,6 +12,7 @@ cache:
 
 before_script:
   - sudo pip install pelican mistune
+  - git clone --depth=1 https://github.com/PoiScript/Solomon-Post.git content
 
 script:
   - make html
