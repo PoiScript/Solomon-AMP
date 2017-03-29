@@ -12,7 +12,6 @@ class AMPRenderer(mistune.Renderer):
     def image(self, src, title, text):
         src = mistune.escape_link(src)
         text = mistune.escape(text, quote=True)
-        # width, height = 0, 0
         width, height = get_image_size(src)
         if title:
             title = mistune.escape(title, quote=True)
