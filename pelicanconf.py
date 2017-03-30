@@ -11,12 +11,13 @@ PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["amp_markdown_reader"]
 
 # URL settings
-TAG_URL = 'tag/{slug}.html'
-TAG_URL_SAVE_AS = 'tag/{slug}.html'
+TAG_URL = 'tag/{slug}'
+TAG_URL_SAVE_AS = 'tag/{slug}/index.html'
 TAGS_SAVE_AS = ''
-ARTICLE_URL = 'post/{slug}.html'
-ARTICLE_SAVE_AS = 'post/{slug}.html'
-ARCHIVES_SAVE_AS = 'archive.html'
+ARTICLE_URL = 'post/{slug}'
+ARTICLE_SAVE_AS = 'post/{slug}/index.html'
+ARCHIVE_SAVE_AS = 'archive'
+ARCHIVES_SAVE_AS = 'archive/index.html'
 AUTHOR_URL = ''
 AUTHOR_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
