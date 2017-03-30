@@ -49,12 +49,23 @@
 {% block content %}
 <h1 class="primary-header">Archives</h1>
 {% for article in articles[:3] %}
-<a class="post-link" href="/{{ article.url }}">{{ article.title }}</a>
-<p>{{ article.date|strftime('%Y-%m-%d') }}
-    {% for tag in article.tags %}
-    <a href="/{{ tag.url }}">{{ tag }}</a>
-    {% endfor %}
-</p>
+    <a class="post-link" href="/{{ article.url }}">{{ article.title }}</a>
+    <p>{{ article.date|strftime('%Y-%m-%d') }}
+        {% for tag in article.tags %}
+        <a href="/{{ tag.url }}">{{ tag }}</a>
+        {% endfor %}
+    </p>
 {% endfor %}
 <a href="/archive.html">Read More</a>
+<h1 class="primary-header">About</h1>
+    {% if SUMMARY_ABOUT %}
+        <p>{{ SUMMARY_ABOUT }}</p>
+    {% endif %}
+<a href="/about.html">Read More</a>
+{% if LINKS %}
+    <h1 class="primary-header">Links</h1>
+    {% for name, link in LINKS %}
+        <p><a class="post-link" href="{{ link }}">{{ name }}</a></p>
+    {% endfor %}
+{% endif %}
 {% endblock content %}

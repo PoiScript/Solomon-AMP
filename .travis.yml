@@ -8,14 +8,22 @@ python:
 cache:
   - pip
 
+env:
+  - TRAVIS_NODE_VERSION="7"
+
 before_script:
-  - sudo pip install pelican mistune pillow
+  - sudo pip3.6 install pelican mistune pillow requests
   - git clone --depth=1 https://github.com/PoiScript/Solomon-Post.git content
 
 script:
   - make html
 
 after_success:
+  - rm -rf ~/.nvm
+  - git clone https://github.com/creationix/nvm.git ~/.nvm
+  - (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`)
+  - source ~/.nvm/nvm.sh
+  - nvm install $TRAVIS_NODE_VERSION
   - npm install -g firebase-tools
   - firebase deploy --token $FIREBASE_TOKEN
 

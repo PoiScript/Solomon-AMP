@@ -2,12 +2,9 @@
 
 {% block title %}{{ article.title }} - {{ SITENAME }}{% endblock title %}
 
-{% block canonical %}
-<link rel="canonical" href="{{ NON_AMP_SITEURL }}/{{ article.url }}"/>{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ NON_AMP_SITEURL }}/about" />{% endblock %}
 
 {% block component %}
-<script async custom-element="amp-image-lightbox"
-        src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 {% endblock %}
 
@@ -18,15 +15,9 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "{{ NON_AMP_SITEURL }}/{{ article.url }}"
+    "@id": "{{ NON_AMP_SITEURL }}/about"
   },
-  "headline": "{{ article.title }}",
-  "image": {
-    "@type": "ImageObject",
-    "url": "{{ article.image }}",
-    "height": 640,
-    "width": 960
-  },
+  "headline": "关于",
   "datePublished": "{{ article.date }}",
   "dateModified": "{{ article.date }}",
   "author": {
@@ -45,8 +36,6 @@
   },
   "description": "An article from Solomon."
 }
-
-
 </script>
 {% endblock %}
 
@@ -61,11 +50,6 @@
 
     .container > div {
         padding: 20px 0 0 0;
-    }
-
-    .footer-link {
-        color: rgba(0, 0, 0, .6);
-        text-decoration: none;
     }
 
     .primary-header {
@@ -84,10 +68,6 @@
         background-color: #fff;
         color: #673ab7;
         border: 1px solid #673ab7;
-    }
-
-    .comment-btn {
-        padding: 50px 0;
     }
 
     .markdown-body {
@@ -539,10 +519,6 @@
 {% endblock %}
 
 {% block content %}
-<amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
-<h1 class="primary-header">{{ article.title }}</h1>
+<h1 class="primary-header">关于</h1>
 <div class="markdown-body">{{ article.content }}</div>
-<p align="center" class="comment-btn">
-    <a class="btn" href="{{ GITHUB_ISSUE_URL }}/{{ article.issue_number }}">VIEW COMMENT ON GITHUB</a>
-</p>
 {% endblock %}

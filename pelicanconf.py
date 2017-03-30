@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 SITENAME = 'Solomon'
 SITEURL = 'https://amp.poi.works'
 PATH = 'content'
-IGNORE_FILES = ['about.md', 'link.md']
+IGNORE_FILES = ['link.md']
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["amp_markdown_reader"]
 
@@ -55,7 +55,17 @@ DEFAULT_LANG = 'zh'
 # Themes
 THEME = 'theme/solomon_amp'
 THEME_STATIC_DIR = ''
+LINKS = (('FiveYellowMice\'s Blog', 'https://fiveyellowmice.com'),
+         ('Farseerfc的小窩', 'https://farseerfc.me'),
+         ('依云\'s Blog', 'https://blog.lilydjwg.me'),
+         ('约伊兹的萌狼乡手札', 'https://blog.yoitsu.moe'),
+         ('Felix\'s Blog', 'https://blog.felixc.at'),
+         ('Typeblog', 'https://typeblog.net'),
+         ('比尔盖子 博客', 'https://tomli.blog'),
+         ('VOID001\'s WOWO', 'https://voidisprogramer.com'),
+         ('恋符「Master Spark」', 'https://marisa-kirisa.me'))
 
 # Extra
-NON_AMP_SITEURL = 'https://poi.works/#'
+NON_AMP_SITEURL = 'https://poi.works'
 GITHUB_ISSUE_URL = 'https://github.com/PoiScript/Solomon-Post/issues'
+SUMMARY_ABOUT = '目前活在时域里的工科狗.'

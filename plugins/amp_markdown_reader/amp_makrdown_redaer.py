@@ -12,32 +12,24 @@ class AMPRenderer(mistune.Renderer):
     def image(self, src, title, text):
         src = mistune.escape_link(src)
         text = mistune.escape(text, quote=True)
-        width, height = get_image_size(src)
+        width, height = 0, 0
+        # width, height = get_image_size(src)
         if title:
             title = mistune.escape(title, quote=True)
-            html = '''
-                <amp-img on="tap:lightbox1"
-                    role="button"
-                    tabindex="0"
-                    src="%s"
-                    alt="%s"
-                    title="%s"
-                    layout="responsive"
-                    width="%s"
-                    height="%s"
-            ''' % (src, text, title, width, height)
+            html = '''<amp-img on="tap:lightbox1" role="button" tabindex="0" src="%s" alt="%s"
+                        title="%s" layout="responsive" width="%s" height="%s">
+                        <noscript>
+                            <img src="%s" alt="%s" title="%s" width="%s" height="%s"/>
+                        </noscript>
+                    ''' % (src, text, title, width, height, src, text, title, width, height)
         else:
-            html = '''
-                <amp-img on="tap:lightbox1"
-                    role="button"
-                    tabindex="0"
-                    src="%s"
-                    alt="%s"
-                    layout="responsive"
-                    width="%s"
-                    height="%s"
-            ''' % (src, text, width, height)
-        return '%s></amp-img>' % html
+            html = '''<amp-img on="tap:lightbox1" role="button" tabindex="0" src="%s" alt="%s"
+                        layout="responsive" width="%s" height="%s">
+                        <noscript>
+                            <img src="%s" alt="%s" width="%s" height="%s"/>
+                        </noscript>
+                    ''' % (src, text, width, height, src, text, width, height)
+        return '%s</amp-img>' % html
 
 
 renderer = AMPRenderer()
