@@ -5,19 +5,10 @@ language: python
 python:
   - "3.6"
 
-
 cache:
   - pip
 
-
 before_script:
-  # install node & npm
-  - sudo apt-get install python-software-properties
-  - curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-  - sudo apt-get install nodejs
-  - node -v
-  - npm -v
-
   - sudo pip install pelican mistune pillow
   - git clone --depth=1 https://github.com/PoiScript/Solomon-Post.git content
 
@@ -25,7 +16,7 @@ script:
   - make html
 
 after_success:
-  - sudo npm install -g firebase-tools
+  - npm install -g firebase-tools
   - firebase deploy --token $FIREBASE_TOKEN
 
 notifications:
