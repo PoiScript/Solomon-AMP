@@ -12,7 +12,7 @@ env:
   - TRAVIS_NODE_VERSION="7"
 
 before_script:
-  - sudo pip3.6 install pelican mistune pillow requests
+  - sudo pip install pelican mistune pillow requests
   - git clone --depth=1 https://github.com/PoiScript/Solomon-Post.git content
 
 script:
